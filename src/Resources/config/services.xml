@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="wakeonweb_kong_oauth2_server.client.admin" class="GuzzleHttp\Client">
+            <argument /><!-- replaced in WakeOnWeb\Bundle\KongOAuth2ServerBundle\DependencyInjection\WakeOnWebKongOAuth2ServerExtension -->
+        </service>
+
+        <service id="wakeonweb_kong_oauth2_server.client.api" class="GuzzleHttp\Client">
+            <argument /><!-- replaced in WakeOnWeb\Bundle\KongOAuth2ServerBundle\DependencyInjection\WakeOnWebKongOAuth2ServerExtension -->
+        </service>
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\User\UsernameAsIdentity" />
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\Client\AdminClient">
+            <argument type="service" id="wakeonweb_kong_oauth2_server.client.admin" />
+        </service>
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\Client\ApiClient">
+            <argument type="service" id="wakeonweb_kong_oauth2_server.client.api" />
+            <argument /><!-- replaced in WakeOnWeb\Bundle\KongOAuth2ServerBundle\DependencyInjection\WakeOnWebKongOAuth2ServerExtension -->
+        </service>
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\Controller\AuthorizeController">
+            <argument /><!-- replaced in WakeOnWeb\Bundle\KongOAuth2ServerBundle\DependencyInjection\WakeOnWebKongOAuth2ServerExtension -->
+            <tag name="controller.service_arguments" />
+        </service>
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\Controller\AutoRizeController">
+            <tag name="controller.service_arguments" />
+        </service>
+
+        <service id="WakeOnWeb\Bundle\KongOAuth2ServerBundle\Controller\LoginController">
+            <tag name="controller.service_arguments" />
+        </service>
+    </services>
+</container>
